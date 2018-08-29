@@ -1,0 +1,13 @@
+<div class="row">
+  <h2><%= @authors.name %></h2>
+
+  <div class="col-sm-6">
+    <% @books.each do |book| %>
+      <div class="row">
+        <h2><%= book.title %></h2>
+        <h3><%= book.genre %></h3>
+        <p><%= book.summary %></p>
+      </div>
+    <% end %>
+  </div>
+</div>

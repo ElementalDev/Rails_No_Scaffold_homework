@@ -6,18 +6,18 @@ class AuthorsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get all" do
-    get authors_all_url
-    assert_response :success
-  end
-
-  test "should get create" do
-    get authors_create_url
+  test "should get show" do
+    get authors_show_url
     assert_response :success
   end
 
   test "should get new" do
     get authors_new_url
+    assert_response :success
+  end
+
+  test "should get create" do
+    get authors_create_url
     assert_response :success
   end
 
@@ -33,11 +33,6 @@ class AuthorsControllerTest < ActionDispatch::IntegrationTest
 
   test "should get delete" do
     get authors_delete_url
-    assert_response :success
-  end
-
-  test "should get one" do
-    get authors_one_url
     assert_response :success
   end
 

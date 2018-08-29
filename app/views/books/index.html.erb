@@ -1,2 +1,7 @@
-<h1>Books#index</h1>
-<p>Find me in app/views/books/index.html.erb</p>
+<h1>All Books</h1>
+<% @books.each do |book| %>
+  <div class="row">
+    <h2><%= book.title %></h2>
+    <%= link_to "See author", author_path(book.id) %>
+  </div>
+<% end %>

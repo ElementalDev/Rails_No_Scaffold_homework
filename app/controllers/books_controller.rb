@@ -1,14 +1,17 @@
 class BooksController < ApplicationController
   def index
+    @books = Book.all
   end
 
-  def all
-  end
-
-  def create
+  def show
+    @books = Book.find(params[:id])
+    @author = @books.author
   end
 
   def new
+  end
+
+  def create
   end
 
   def edit
@@ -17,9 +20,6 @@ class BooksController < ApplicationController
   def update
   end
 
-  def delete
-  end
-
-  def one
+  def destroy
   end
 end

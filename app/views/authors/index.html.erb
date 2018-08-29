@@ -1,2 +1,12 @@
-<h1>Authors#index</h1>
-<p>Find me in app/views/authors/index.html.erb</p>
+<%= link_to "Add Author", new_author_path %>
+
+<h1>All Authors</h1>
+<% @authors.each do |author| %>
+  <div class="row">
+    <img src="<%= author.img_url %>" alt="Picture not found">
+    <h2><%= author.name %></h2>
+    <%= link_to "See books", author_path(author.id) %>
+    <%= link_to "Edit", edit_author_path(author.id) %>
+    <%= link_to "Delete", author, method: :delete, data: { confirm: 'Are you sure?' }  %>
+  </div>
+<% end %>
