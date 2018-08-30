@@ -1,12 +1,16 @@
 <div class="row">
+  <%= link_to "Back", home_path %>
+  <%= link_to "Add book", new_book_path(@authors.id) %>
   <h2><%= @authors.name %></h2>
 
   <div class="col-sm-6">
     <% @books.each do |book| %>
       <div class="row">
-        <h2><%= book.title %></h2>
+        <h3><%= book.title %></h3>
         <h3><%= book.genre %></h3>
         <p><%= book.summary %></p>
+        <%= link_to "Edit", edit_book_path(book.id) %>
+        <%= link_to "Delete", book, method: :delete, data: { confirm: 'Are you sure?' }  %>
       </div>
     <% end %>
   </div>

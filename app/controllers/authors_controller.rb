@@ -14,16 +14,9 @@ class AuthorsController < ApplicationController
 
   def create
     @author = Author.new(post_params)
-
-    respond_to do |format|
-      if @author.save
-        format.html { redirect_to @author, notice: 'Post was successfully created.' }
-        format.json { render :show, status: :created, location: @author }
-      else
-        format.html { render :new }
-        format.json { render json: @author.errors, status: :unprocessable_entity }
-      end
-    end
+    @author.save
+    @authors = Author.all
+    redirect_to home_path
   end
 
   def edit
@@ -32,25 +25,20 @@ class AuthorsController < ApplicationController
 
   def update
     @author = Author.find(params[:id])
-
-    respond_to do |format|
-      if @author.update(post_params)
-        format.html { redirect_to @author, notice: 'Post was successfully created.' }
-        format.json { render :show, status: :created, location: @author }
-      else
-        format.html { render :new }
-        format.json { render json: @author.errors, status: :unprocessable_entity }
-      end
-    end
+    @author.update(post_params)
+    @authors = Author.all
+    redirect_to home_path
   end
 
   def destroy
     @author = Author.find(params[:id])
-    @author.destroy
-      respond_to do |format|
-        format.html { redirect_to home_path, notice: 'Post was successfully destroyed.' }
-        format.json { head :no_content }
+    @books = @author.books
+    if (@books)
+      @books.destroy
+      @author.destroy
     end
+    @authors = Author.all
+    redirect_to home_path
   end
 
   private
