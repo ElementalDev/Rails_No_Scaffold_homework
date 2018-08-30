@@ -32,11 +32,7 @@ class AuthorsController < ApplicationController
 
   def destroy
     @author = Author.find(params[:id])
-    @books = @author.books
-    if (@books)
-      @books.destroy
-      @author.destroy
-    end
+    @author.destroy
     @authors = Author.all
     redirect_to home_path
   end
